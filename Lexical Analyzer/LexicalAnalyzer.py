@@ -32,6 +32,7 @@ class LexicalAnalyzer:
         self._l_operator = set()
         self._numeric_values = set()
         self._others = set()
+        self._check = False
     
     @property
     def keywords(self):
@@ -60,7 +61,7 @@ class LexicalAnalyzer:
     
     @property
     def others(self):
-        """:obj:`set` of :obj:`str`: Holds all the special characters such as  found in the C code"""
+        """:obj:`set` of :obj:`str`: Holds all the special characters such as , ; {}[] found in the C code"""
         return self._others
     
     def compute_symbol_table(self):
@@ -72,18 +73,20 @@ class LexicalAnalyzer:
         identifier, keywords etc. from each line.
         
         """
-        
-        with open(self.filepath) as file:
-            for line in file:
-                line = line.strip()
-                words = line.split()
-                self.keyword_identifier(words)
-                self.logic_ops_identifier(words)
-                self.math_ops_identifier(words)
-                self.special_char_identifier(words)
-                self.numerics_identifier(words)
-                
-                self._identifiers.update(words)
+        if(not self._check):
+            self._check = True
+            print("Dhuksi")
+            with open(self.filepath) as file:
+                for line in file:
+                    line = line.strip()
+                    words = line.split()
+                    self.keyword_identifier(words)
+                    self.logic_ops_identifier(words)
+                    self.math_ops_identifier(words)
+                    self.special_char_identifier(words)
+                    self.numerics_identifier(words)
+                    
+                    self._identifiers.update(words)
 
 
     def keyword_identifier(self, words):
@@ -239,6 +242,10 @@ Others: {ot}""".format(keys=', '.join(self.keywords),idens=', '.join(self._ident
                         math=', '.join(self.math_operators),logic=', '.join(self.logical_operators),
                         nums=', '.join(self.numeric_values),ot=' '.join(self.others))
         return s
+    
+    
+    def __repr__(self):
+        return "LexicalAnalyzer('{file}')".format(file=self.filepath)
     
     
     def __remove_empty(self,words):
