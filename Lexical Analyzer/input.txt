@@ -3,6 +3,14 @@ int a, b, c;
 float d, e;
 a = b = 5;
 c = 6;
+double val = 51.5
+for(int i=0;i<val;i++)
+{
+	double res += i * val;
+	res /= 2;
+	res = res % 5;
+}
+
 if ( a > b)
 {
 	c = a - b;
