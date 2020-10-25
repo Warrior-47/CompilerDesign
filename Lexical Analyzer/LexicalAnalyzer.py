@@ -134,16 +134,7 @@ class LexicalAnalyzer:
                         temp = word.replace(ops, ' ')
                         words += temp.split()
                     break
-                    """if word == ops:
-                        del(words[ind])
-                    else:
-                        words[ind] = word.replace(ops, '')
-                        word = word.replace(ops, '')
-                        '''temp = word.replace(ops, ' ')
-                        del(words[ind])
-                        words += temp.split()
-                        break'''
-                        """
+                    
         self.__remove_empty(words)
     
     
@@ -168,12 +159,7 @@ class LexicalAnalyzer:
                         temp = word.replace(ops, ' ')
                         words += temp.split()
                     break
-                    '''if word == ops:
-                        del(words[ind])
-                    else:
-                        words[ind] = word.replace(ops, '')
-                        word = word.replace(ops, '')
-                        '''
+                    
         self.__remove_empty(words)
     
     
@@ -198,12 +184,7 @@ class LexicalAnalyzer:
                         temp = word.replace(char, ' ')
                         words += temp.split()
                     break
-                    '''if word == char:
-                        del(words[ind])
-                    else:
-                        words[ind] = word.replace(char, '')
-                        word = word.replace(char, '')
-                        '''
+                    
         self.__remove_empty(words)
 
 
