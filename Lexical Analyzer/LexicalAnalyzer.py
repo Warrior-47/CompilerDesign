@@ -32,7 +32,7 @@ class LexicalAnalyzer:
         self._l_operator = set()
         self._numeric_values = set()
         self._others = set()
-        self._check = False
+        self._check = True
     
     @property
     def keywords(self):
@@ -73,9 +73,8 @@ class LexicalAnalyzer:
         identifier, keywords etc. from each line.
         
         """
-        if(not self._check):
-            self._check = True
-            print("Dhuksi")
+        if(self._check):
+            self._check = False
             with open(self.filepath) as file:
                 for line in file:
                     line = line.strip()
